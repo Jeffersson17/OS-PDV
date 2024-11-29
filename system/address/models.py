@@ -11,6 +11,11 @@ class City(models.Model):
         return self.name
 
 
+    class Meta:
+        verbose_name = 'Cidade'
+        verbose_name_plural = 'Cidades'
+
+
 class Address(models.Model):
     id = models.AutoField(primary_key=True)
     address = models.CharField(max_length=250)
@@ -21,3 +26,8 @@ class Address(models.Model):
 
     def __str__(self):
         return self.address
+
+
+    class Meta:
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'

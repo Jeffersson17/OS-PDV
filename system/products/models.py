@@ -11,6 +11,10 @@ class ProductBrand(models.Model):
         return self.name
 
 
+    class Meta:
+        verbose_name = 'Marca do Produto'
+
+
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=25)
@@ -22,3 +26,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+    class Meta:
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'

@@ -14,6 +14,11 @@ class Enterprise(models.Model):
         return self.name
 
 
+    class Meta:
+        verbose_name = 'Empresa'
+        verbose_name_plural = 'Empresas'
+
+
 class User(models.Model):
     id = models.AutoField(primary_key=True)
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
@@ -27,3 +32,8 @@ class User(models.Model):
 
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+
+    class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
