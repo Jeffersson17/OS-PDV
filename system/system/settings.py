@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'sales',
 ]
 
+AUTH_USER_MODEL = 'enterprise.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

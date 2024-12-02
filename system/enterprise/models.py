@@ -1,5 +1,6 @@
 from django.db import models
 from address.models import Address
+from django.contrib.auth.models import AbstractUser
 
 
 class Enterprise(models.Model):
@@ -19,19 +20,11 @@ class Enterprise(models.Model):
         verbose_name_plural = 'Empresas'
 
 
-class User(models.Model):
-    id = models.AutoField(primary_key=True)
+class CustomUser(AbstractUser):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    phone = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20)
     cpf = models.CharField(max_length=11)
     date_birth = models.DateField()
-    email = models.EmailField()
-
-
-    def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
 
 
     class Meta:
