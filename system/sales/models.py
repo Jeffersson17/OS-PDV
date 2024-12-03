@@ -4,7 +4,7 @@ from products.models import Product
 
 class Sales(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey('enterprise.CustomUser', on_delete=models.CASCADE)
+    user = models.ForeignKey('user.User', on_delete=models.CASCADE)
     purchase_date = models.DateField()
     products = models.ManyToManyField(Product, related_name='sale', through='ProductsSales')
 
