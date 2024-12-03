@@ -1,6 +1,7 @@
 version: "3.9"
+
 services:
-  db:
+  postgres:
     image: postgres:15
     env_file:
       - ./envs/postgres.env
@@ -9,7 +10,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "jeffersson", "-d", "systemsales"]
+      test: ["CMD", "pg_isready", "-U", "jeffersson", "-d", "pentecoste_sales"]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -17,16 +18,14 @@ services:
     networks:
       - mynetwork
 
-  web_api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  django:
+    build: ./django
     ports:
       - "8000:8000"
     volumes:
       - ./django:/api
     depends_on:
-      db:
+      postgres:
         condition: service_healthy
     env_file:
       - ./envs/postgres.env

@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("enterprise", "0001_initial"),
+        ("enterprises", "0001_initial"),
     ]
 
     operations = [

@@ -13,7 +13,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("auth", "0012_alter_user_first_name_max_length"),
-        ("enterprise", "0002_remove_user_enterprise_alter_enterprise_options"),
     ]
 
     operations = [

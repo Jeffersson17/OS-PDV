@@ -1,9 +1,5 @@
-if %mode == 'development'
-then
-    bash migration.sh
-end
+echo "starting migrate"
+python3 manage.py migrate
 
-if $mode == 'development'
-then
-    python manage.py runserver 0.0.0.0:8000
-end
+echo "starting server"
+python manage.py runserver 0.0.0.0:8000
