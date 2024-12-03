@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import Enterprise
+from enterprises.models import Enterprise
 
 admin.site.register(Enterprise)
