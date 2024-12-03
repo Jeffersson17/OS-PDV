@@ -1,5 +1,7 @@
-from django.db import models
 from enterprises.models import Enterprise
+
+from django.db import models
+
 
 class ProductBrand(models.Model):
     id = models.AutoField(primary_key=True)
@@ -9,7 +11,7 @@ class ProductBrand(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Marca do Produto'
+        verbose_name = "Marca do Produto"
 
 
 class Product(models.Model):
@@ -24,5 +26,5 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Produto'
-        verbose_name_plural = 'Produtos'
+        verbose_name = "Produto"
+        verbose_name_plural = "Produtos"

@@ -1,5 +1,7 @@
-from django.db import models
 from addresses.models import Address
+
+from django.db import models
+
 
 class Enterprise(models.Model):
     id = models.AutoField(primary_key=True)
@@ -12,5 +14,5 @@ class Enterprise(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Empresa'
-        verbose_name_plural = 'Empresas'
+        verbose_name = "Empresa"
+        verbose_name_plural = "Empresas"

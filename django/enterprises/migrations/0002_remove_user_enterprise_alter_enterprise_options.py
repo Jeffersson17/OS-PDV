@@ -6,16 +6,19 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('enterprise', '0001_initial'),
+        ("enterprise", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='user',
-            name='enterprise',
+            model_name="user",
+            name="enterprise",
         ),
         migrations.AlterModelOptions(
-            name='enterprise',
-            options={'verbose_name': 'Empresa', 'verbose_name_plural': 'Empresas'},
+            name="enterprise",
+            options={
+                "verbose_name": "Empresa",
+                "verbose_name_plural": "Empresas",
+            },
         ),
     ]

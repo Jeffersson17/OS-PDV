@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class City(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
@@ -9,8 +10,8 @@ class City(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Cidade'
-        verbose_name_plural = 'Cidades'
+        verbose_name = "Cidade"
+        verbose_name_plural = "Cidades"
 
 
 class Address(models.Model):
@@ -24,5 +25,5 @@ class Address(models.Model):
         return self.address
 
     class Meta:
-        verbose_name = 'Endereço'
-        verbose_name_plural = 'Endereços'
+        verbose_name = "Endereço"
+        verbose_name_plural = "Endereços"

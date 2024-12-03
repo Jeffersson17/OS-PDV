@@ -9,31 +9,55 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('enterprise', '0001_initial'),
-        ('products', '0001_initial'),
+        ("enterprise", "0001_initial"),
+        ("products", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProductsSales',
+            name="ProductsSales",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('quantity_purchased', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.product')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "quantity_purchased",
+                    models.DecimalField(decimal_places=2, max_digits=10),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.product",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Sales',
+            name="Sales",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('purchase_date', models.DateField()),
-                ('products', models.ManyToManyField(related_name='sale', through='sales.ProductsSales', to='products.product')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='enterprise.user')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("purchase_date", models.DateField()),
+                (
+                    "products",
+                    models.ManyToManyField(
+                        related_name="sale",
+                        through="sales.ProductsSales",
+                        to="products.product",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="enterprise.user",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='productssales',
-            name='sale',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='sales.sales'),
+            model_name="productssales",
+            name="sale",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="sales.sales"
+            ),
         ),
     ]

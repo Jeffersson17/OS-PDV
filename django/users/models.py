@@ -1,6 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
 from enterprises.models import Enterprise
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 
 class User(AbstractUser):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
@@ -9,5 +11,5 @@ class User(AbstractUser):
     date_birth = models.DateField()
 
     class Meta:
-        verbose_name = 'Usuario'
-        verbose_name_plural = 'Usuarios'
+        verbose_name = "Usuario"
+        verbose_name_plural = "Usuarios"

@@ -9,31 +9,43 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('address', '0001_initial'),
+        ("address", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Enterprise',
+            name="Enterprise",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=150)),
-                ('cnpj', models.CharField(max_length=14)),
-                ('area', models.CharField(max_length=75)),
-                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='address.address')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("name", models.CharField(max_length=150)),
+                ("cnpj", models.CharField(max_length=14)),
+                ("area", models.CharField(max_length=75)),
+                (
+                    "address",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="address.address",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('first_name', models.CharField(max_length=30)),
-                ('last_name', models.CharField(max_length=30)),
-                ('phone', models.CharField(max_length=20)),
-                ('cpf', models.CharField(max_length=11)),
-                ('date_birth', models.DateField()),
-                ('email', models.EmailField(max_length=254)),
-                ('enterprise', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='enterprise.enterprise')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("first_name", models.CharField(max_length=30)),
+                ("last_name", models.CharField(max_length=30)),
+                ("phone", models.CharField(max_length=20)),
+                ("cpf", models.CharField(max_length=11)),
+                ("date_birth", models.DateField()),
+                ("email", models.EmailField(max_length=254)),
+                (
+                    "enterprise",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="enterprise.enterprise",
+                    ),
+                ),
             ],
         ),
     ]

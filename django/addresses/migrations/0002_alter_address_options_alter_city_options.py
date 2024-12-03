@@ -6,16 +6,22 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('address', '0001_initial'),
+        ("address", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='address',
-            options={'verbose_name': 'Endereço', 'verbose_name_plural': 'Endereços'},
+            name="address",
+            options={
+                "verbose_name": "Endereço",
+                "verbose_name_plural": "Endereços",
+            },
         ),
         migrations.AlterModelOptions(
-            name='city',
-            options={'verbose_name': 'Cidade', 'verbose_name_plural': 'Cidades'},
+            name="city",
+            options={
+                "verbose_name": "Cidade",
+                "verbose_name_plural": "Cidades",
+            },
         ),
     ]

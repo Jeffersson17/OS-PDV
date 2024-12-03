@@ -8,26 +8,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='City',
+            name="City",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100)),
-                ('state', models.CharField(max_length=100)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("name", models.CharField(max_length=100)),
+                ("state", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Address',
+            name="Address",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('address', models.CharField(max_length=250)),
-                ('cep', models.CharField(max_length=8)),
-                ('number', models.PositiveIntegerField()),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='address.city')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("address", models.CharField(max_length=250)),
+                ("cep", models.CharField(max_length=8)),
+                ("number", models.PositiveIntegerField()),
+                (
+                    "city",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="address.city",
+                    ),
+                ),
             ],
         ),
     ]
