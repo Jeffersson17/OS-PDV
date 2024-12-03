@@ -1,7 +1,6 @@
 from django.db import models
 from addresses.models import Address
 
-
 class Enterprise(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
@@ -9,10 +8,8 @@ class Enterprise(models.Model):
     cnpj = models.CharField(max_length=14)
     area = models.CharField(max_length=75)
 
-
     def __str__(self):
         return self.name
-
 
     class Meta:
         verbose_name = 'Empresa'
