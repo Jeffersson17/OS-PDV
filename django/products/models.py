@@ -1,5 +1,5 @@
 from django.db import models
-from enterprise.models import Enterprise
+from enterprises.models import Enterprise
 
 
 class ProductBrand(models.Model):

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
-from enterprise.models import Enterprise
+from enterprises.models import Enterprise
 
 class User(AbstractUser):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)

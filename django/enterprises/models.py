@@ -1,5 +1,5 @@
 from django.db import models
-from address.models import Address
+from addresses.models import Address
 
 
 class Enterprise(models.Model):
