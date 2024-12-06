@@ -1,6 +1,7 @@
 from products.models import Product
 
 from django.db import models
+from django.db.models import F, Sum
 
 
 class Sales(models.Model):
@@ -12,10 +13,12 @@ class Sales(models.Model):
     )
 
     def total_price(self):
-        total = 0
-        for product_sale in self.productssales_set.all():
-            total += product_sale.total_price()
-        return total
+        return (
+            self.productssales_set.aggregate(
+                total=Sum(F("quantity_purchased") * F("product__price"))
+            )["total"]
+            or 0
+        )
 
     def __str__(self):
         return f"{self.user.username}"

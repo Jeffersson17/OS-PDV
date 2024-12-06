@@ -1,12 +1,8 @@
-from products.models import Product
 from rest_framework import serializers
 from sales.models import ProductsSales, Sales
 
 
 class SerializerSales(serializers.ModelSerializer):
-    products = serializers.PrimaryKeyRelatedField(
-        queryset=Product.objects.all(), many=True
-    )
     username = serializers.StringRelatedField(source="user")
     total_price = serializers.SerializerMethodField()
 
@@ -14,7 +10,7 @@ class SerializerSales(serializers.ModelSerializer):
         model = Sales
         fields = [
             "id",
-            "user_id",
+            "user",
             "username",
             "purchase_date",
             "total_price",
