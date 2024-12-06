@@ -22,7 +22,8 @@ class SerializerSales(serializers.ModelSerializer):
 
 
 class SerializerProductsSales(serializers.ModelSerializer):
+    product_name = serializers.StringRelatedField(source="product")
 
     class Meta:
         model = ProductsSales
-        fields = ["id", "product", "sale", "quantity_purchased"]
+        fields = ["id", "product", "product_name", "sale", "quantity_purchased"]
