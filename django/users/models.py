@@ -5,6 +5,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    id = models.AutoField(primary_key=True)
     enterprise = models.ForeignKey(
         Enterprise, on_delete=models.CASCADE, null=True, blank=True
     )
