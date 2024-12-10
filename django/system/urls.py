@@ -1,4 +1,11 @@
-from addresses.views import AddressViewSet, CityViewSet
+from addresses.views import (
+    AddressDetailAPIView,
+    AddressListAPIView,
+    AddressViewSet,
+    CityDetailAPIView,
+    CityListAPIView,
+    CityViewSet,
+)
 from products.views import ProductBrandViewSet, ProductViewSet
 from rest_framework import routers
 from rest_framework_simplejwt.views import (
@@ -56,5 +63,19 @@ urlpatterns = [
         "products-sales/detail/<int:pk>/",
         ProductsSalesDetailAPIView.as_view(),
         name="products_sales_detail",
+    ),
+    path(
+        "address-api/list/", AddressListAPIView.as_view(), name="address_list"
+    ),
+    path("city-api/list/", CityListAPIView.as_view(), name="city_list"),
+    path(
+        "address-api/detail/<int:pk>/",
+        AddressDetailAPIView.as_view(),
+        name="address_detail",
+    ),
+    path(
+        "city-api/detail/<int:pk>/",
+        CityDetailAPIView.as_view(),
+        name="city_detail",
     ),
 ]
