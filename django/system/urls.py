@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from sales.views import ProductsSalesViewSet, SalesViewSet
-from users.views import UserViewSet
+from users.views import UserDetailAPIView, UserListAPIView, UserViewSet
 
 from django.contrib import admin
 from django.urls import include, path
@@ -21,11 +21,17 @@ router.register(r"products_sales", ProductsSalesViewSet)
 router.register(r"sales", SalesViewSet)
 
 urlpatterns = [
+    path("", include(router.urls)),
     path("admin/", admin.site.urls),
     path("token/", TokenObtainPairView.as_view()),
     path("token/refresh/", TokenRefreshView.as_view()),
-    path("", include(router.urls)),
     path(
         "api-auth/", include("rest_framework.urls", namespace="rest_framework")
+    ),
+    path("users-api/list/", UserListAPIView.as_view(), name="list_api"),
+    path(
+        "users-api/detail/<int:pk>/",
+        UserDetailAPIView.as_view(),
+        name="detail_api",
     ),
 ]
