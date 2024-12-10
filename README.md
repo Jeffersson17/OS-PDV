@@ -17,5 +17,6 @@ Um sistema de ponto de venda (PDV) desenvolvido com Django, Django REST framewor
    cd OS-PDV
 
 2. Inicie o projeto:
+    Na pasta do projeto dê o comando:
     ```bash
     docker-compose up --build
