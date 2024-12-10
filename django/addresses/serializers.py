@@ -10,7 +10,16 @@ class CitySerializer(serializers.ModelSerializer):
 
 
 class AddressSerializer(serializers.ModelSerializer):
+    city_base = city_base = CitySerializer(read_only=True, source="city")
 
     class Meta:
         model = Address
-        fields = ["id", "address", "city", "cep", "number", "complement"]
+        fields = [
+            "id",
+            "address",
+            "city",
+            "city_base",
+            "cep",
+            "number",
+            "complement",
+        ]
