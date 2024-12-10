@@ -1,33 +1,13 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 from sales.models import ProductsSales, Sales
 from sales.serializers import SerializerProductsSales, SerializerSales
 
 
 class ProductsSalesViewSet(viewsets.ModelViewSet):
-    queryset = ProductsSales.objects.all().order_by("id")
+    queryset = ProductsSales.objects.all()
     serializer_class = SerializerProductsSales
 
 
 class SalesViewSet(viewsets.ModelViewSet):
-    queryset = Sales.objects.all().order_by("id")
-    serializer_class = SerializerSales
-
-
-class SalesListAPIView(generics.ListAPIView):
-    queryset = Sales.objects.all().order_by("id")
-    serializer_class = SerializerSales
-
-
-class ProductsSalesListAPIView(generics.ListAPIView):
-    queryset = ProductsSales.objects.all().order_by("id")
-    serializer_class = SerializerProductsSales
-
-
-class SalesDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Sales.objects.all()
     serializer_class = SerializerSales
-
-
-class ProductsSalesDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ProductsSales.objects.all()
-    serializer_class = SerializerProductsSales

@@ -5,14 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from sales.views import (
-    ProductsSalesDetailAPIView,
-    ProductsSalesListAPIView,
-    ProductsSalesViewSet,
-    SalesDetailAPIView,
-    SalesListAPIView,
-    SalesViewSet,
-)
+from sales.views import ProductsSalesViewSet, SalesViewSet
 from users.views import UserDetailAPIView, UserListAPIView, UserViewSet
 
 from django.contrib import admin
@@ -40,21 +33,5 @@ urlpatterns = [
         "users-api/detail/<int:pk>/",
         UserDetailAPIView.as_view(),
         name="detail_api",
-    ),
-    path("sales-api/list/", SalesListAPIView.as_view(), name="sales_list"),
-    path(
-        "sales-api/detail/<int:pk>/",
-        SalesDetailAPIView.as_view(),
-        name="sales_detail",
-    ),
-    path(
-        "products-sales/list/",
-        ProductsSalesListAPIView.as_view(),
-        name="products_sales_list",
-    ),
-    path(
-        "products-sales/detail/<int:pk>/",
-        ProductsSalesDetailAPIView.as_view(),
-        name="products_sales_detail",
     ),
 ]
