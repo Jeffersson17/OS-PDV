@@ -14,6 +14,11 @@ class UserViewSetTestCase(APITestCase):
             password="teste1",
         )
 
+    def test_create_user(self):
+        self.data = {"username": "teste", "password": "teste"}
+        response = self.client.post(self.url, self.data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
     def test_list_user(self):
         self.url_list = "/users-api/list/"
         response = self.client.get(self.url_list)
