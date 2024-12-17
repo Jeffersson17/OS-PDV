@@ -6,7 +6,7 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ["name", "state"]
+        fields = "__all__"
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -14,12 +14,4 @@ class AddressSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Address
-        fields = [
-            "id",
-            "address",
-            "city",
-            "city_base",
-            "cep",
-            "number",
-            "complement",
-        ]
+        fields = "__all__"

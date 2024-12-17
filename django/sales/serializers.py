@@ -8,14 +8,7 @@ class SerializerSales(serializers.ModelSerializer):
 
     class Meta:
         model = Sales
-        fields = [
-            "id",
-            "user",
-            "username",
-            "purchase_date",
-            "total_price",
-            "products",
-        ]
+        fields = "__all__"
 
     def get_total_price(self, obj):
         return obj.total_price()
@@ -26,10 +19,4 @@ class SerializerProductsSales(serializers.ModelSerializer):
 
     class Meta:
         model = ProductsSales
-        fields = [
-            "id",
-            "product",
-            "product_name",
-            "sale",
-            "quantity_purchased",
-        ]
+        fields = "__all__"

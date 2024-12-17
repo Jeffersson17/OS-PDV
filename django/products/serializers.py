@@ -6,7 +6,7 @@ class SerializerProductBrand(serializers.ModelSerializer):
 
     class Meta:
         model = ProductBrand
-        fields = ["id", "name"]
+        fields = "__all__"
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -15,13 +15,4 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = [
-            "id",
-            "name",
-            "price",
-            "enterprise",
-            "enterprise_name",
-            "mark",
-            "mark_name",
-            "stock",
-        ]
+        fields = "__all__"
