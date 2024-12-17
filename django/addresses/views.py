@@ -13,16 +13,6 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializer
 
 
-class AddressListAPIView(generics.ListAPIView):
-    queryset = Address.objects.all().order_by("id")
-    serializer_class = AddressSerializer
-
-
-class CityListAPIView(generics.ListAPIView):
-    queryset = City.objects.all().order_by("id")
-    serializer_class = CitySerializer
-
-
 class AddressDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
