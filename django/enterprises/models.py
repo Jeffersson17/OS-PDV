@@ -13,10 +13,12 @@ class Enterprise(models.Model):
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     cnpj = models.CharField(max_length=14)
     area = models.CharField(max_length=75)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
+        ordering = ["created_date"]
         verbose_name = "Empresa"
         verbose_name_plural = "Empresas"

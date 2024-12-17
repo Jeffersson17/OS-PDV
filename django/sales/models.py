@@ -15,6 +15,7 @@ class Sales(models.Model):
     products = models.ManyToManyField(
         Product, related_name="sale", through="ProductsSales"
     )
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def total_price(self):
         return (
@@ -28,6 +29,7 @@ class Sales(models.Model):
         return f"{self.user.username}"
 
     class Meta:
+        ordering = ["created_date"]
         verbose_name = "Venda"
         verbose_name_plural = "Vendas"
 
@@ -39,6 +41,7 @@ class ProductsSales(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     sale = models.ForeignKey(Sales, on_delete=models.CASCADE)
     quantity_purchased = models.PositiveIntegerField()
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.product.name} - {self.quantity_purchased}"
@@ -61,5 +64,6 @@ class ProductsSales(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
+        ordering = ["created_date"]
         verbose_name = "Produto Vendido"
         verbose_name_plural = "Produtos Vendidos"

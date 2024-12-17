@@ -16,7 +16,9 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20)
     cpf = models.CharField(max_length=11)
     date_birth = models.DateField(null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        ordering = ["created_date"]
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
