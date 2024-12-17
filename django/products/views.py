@@ -13,16 +13,6 @@ class ProductBrandViewSet(viewsets.ModelViewSet):
     serializer_class = SerializerProductBrand
 
 
-class ProductListAPIView(generics.ListAPIView):
-    queryset = Product.objects.all().order_by("id")
-    serializer_class = ProductSerializer
-
-
-class ProductBrandListAPIView(generics.ListAPIView):
-    queryset = ProductBrand.objects.all().order_by("id")
-    serializer_class = SerializerProductBrand
-
-
 class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
