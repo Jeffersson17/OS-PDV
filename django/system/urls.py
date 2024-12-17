@@ -25,7 +25,7 @@ from sales.views import (
     SalesListAPIView,
     SalesViewSet,
 )
-from users.views import UserDetailAPIView, UserListAPIView, UserViewSet
+from users.views import UserDetailAPIView, UserViewSet
 
 from django.contrib import admin
 from django.urls import include, path
@@ -47,7 +47,6 @@ urlpatterns = [
     path(
         "api-auth/", include("rest_framework.urls", namespace="rest_framework")
     ),
-    path("users-api/list/", UserListAPIView.as_view(), name="list_api"),
     path(
         "users-api/detail/<int:pk>/",
         UserDetailAPIView.as_view(),
