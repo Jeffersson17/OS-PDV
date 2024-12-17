@@ -1,3 +1,5 @@
+import uuid
+
 from products.models import Product
 
 from django.db import models
@@ -5,7 +7,9 @@ from django.db.models import F, Sum
 
 
 class Sales(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, primary_key=True
+    )
     user = models.ForeignKey("users.User", on_delete=models.CASCADE)
     purchase_date = models.DateField()
     products = models.ManyToManyField(
@@ -29,7 +33,9 @@ class Sales(models.Model):
 
 
 class ProductsSales(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, primary_key=True
+    )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     sale = models.ForeignKey(Sales, on_delete=models.CASCADE)
     quantity_purchased = models.PositiveIntegerField()
