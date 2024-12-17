@@ -1,3 +1,5 @@
+import uuid
+
 from enterprises.models import Enterprise
 
 from django.contrib.auth.models import AbstractUser
@@ -5,7 +7,9 @@ from django.db import models
 
 
 class User(AbstractUser):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, primary_key=True
+    )
     enterprise = models.ForeignKey(
         Enterprise, on_delete=models.CASCADE, null=True, blank=True
     )

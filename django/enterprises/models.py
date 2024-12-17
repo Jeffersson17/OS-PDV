@@ -1,10 +1,14 @@
+import uuid
+
 from addresses.models import Address
 
 from django.db import models
 
 
 class Enterprise(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, primary_key=True
+    )
     name = models.CharField(max_length=150)
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     cnpj = models.CharField(max_length=14)

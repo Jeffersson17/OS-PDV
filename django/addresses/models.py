@@ -1,8 +1,12 @@
+import uuid
+
 from django.db import models
 
 
 class City(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, primary_key=True
+    )
     name = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
 
@@ -15,7 +19,9 @@ class City(models.Model):
 
 
 class Address(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False, primary_key=True
+    )
     address = models.CharField(max_length=250)
     cep = models.CharField(max_length=8)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
