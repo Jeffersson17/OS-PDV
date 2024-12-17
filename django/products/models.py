@@ -3,6 +3,7 @@ import uuid
 from enterprises.models import Enterprise
 
 from django.db import models
+from django.utils import timezone
 
 
 class ProductBrand(models.Model):
@@ -10,7 +11,9 @@ class ProductBrand(models.Model):
         default=uuid.uuid4, unique=True, editable=False, primary_key=True
     )
     name = models.CharField(max_length=50)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(
+        auto_now_add=True, default=timezone.now
+    )
 
     def __str__(self):
         return self.name
@@ -29,7 +32,9 @@ class Product(models.Model):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     mark = models.ForeignKey(ProductBrand, on_delete=models.CASCADE)
     stock = models.PositiveIntegerField()
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(
+        auto_now_add=True, default=timezone.now
+    )
 
     def __str__(self):
         return self.name
