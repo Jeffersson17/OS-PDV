@@ -14,7 +14,7 @@ class UserViewSetTestCase(APITestCase):
         self.url = "/users/"
         self.url_detail = f"/users-api/detail/{self.user1.id}/"
 
-    def test_create_user(self):
+    def test_api_view_user(self):
         payload = {
             "username": "teste",
             "email": "teste@teste.com",
@@ -23,13 +23,10 @@ class UserViewSetTestCase(APITestCase):
             "cpf": "00100100101",
             "date_birth": "2000-01-01",
         }
+        response_list = self.client.get(self.url)
         response = self.client.post(self.url, payload, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    def test_list_user(self):
-        self.url_list = "/users-api/list/"
-        response = self.client.get(self.url_list)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response_list.status_code, status.HTTP_200_OK)
 
     def test_detail_api(self):
         response = self.client.get(self.url_detail)
