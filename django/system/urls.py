@@ -6,10 +6,8 @@ from addresses.views import (
 )
 from products.views import (
     ProductBrandDetailAPIView,
-    ProductBrandListAPIView,
     ProductBrandViewSet,
     ProductDetailAPIView,
-    ProductListAPIView,
     ProductViewSet,
 )
 from rest_framework import routers
@@ -19,10 +17,8 @@ from rest_framework_simplejwt.views import (
 )
 from sales.views import (
     ProductsSalesDetailAPIView,
-    ProductsSalesListAPIView,
     ProductsSalesViewSet,
     SalesDetailAPIView,
-    SalesListAPIView,
     SalesViewSet,
 )
 from users.views import UserDetailAPIView, UserViewSet
@@ -52,16 +48,10 @@ urlpatterns = [
         UserDetailAPIView.as_view(),
         name="detail_api",
     ),
-    path("sales-api/list/", SalesListAPIView.as_view(), name="sales_list"),
     path(
         "sales-api/detail/<int:pk>/",
         SalesDetailAPIView.as_view(),
         name="sales_detail",
-    ),
-    path(
-        "products-sales/list/",
-        ProductsSalesListAPIView.as_view(),
-        name="products_sales_list",
     ),
     path(
         "products-sales/detail/<int:pk>/",
@@ -77,14 +67,6 @@ urlpatterns = [
         "city-api/detail/<int:pk>/",
         CityDetailAPIView.as_view(),
         name="city_detail",
-    ),
-    path(
-        "product-api/list/", ProductListAPIView.as_view(), name="product_list"
-    ),
-    path(
-        "product-brand-api/list/",
-        ProductBrandListAPIView.as_view(),
-        name="product_brand_list",
     ),
     path(
         "product-api/detail/<int:pk>/",
