@@ -4,7 +4,6 @@ from enterprises.models import Enterprise
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils import timezone
 
 
 class User(AbstractUser):
@@ -18,7 +17,7 @@ class User(AbstractUser):
     cpf = models.CharField(max_length=11)
     date_birth = models.DateField(null=True, blank=True)
     created_date = models.DateTimeField(
-        auto_now_add=True, default=timezone.now
+        auto_now_add=True, editable=False
     )
 
     class Meta:

@@ -3,7 +3,6 @@ import uuid
 from addresses.models import Address
 
 from django.db import models
-from django.utils import timezone
 
 
 class Enterprise(models.Model):
@@ -15,7 +14,7 @@ class Enterprise(models.Model):
     cnpj = models.CharField(max_length=14)
     area = models.CharField(max_length=75)
     created_date = models.DateTimeField(
-        auto_now_add=True, default=timezone.now
+        auto_now_add=True, editable=False
     )
 
     def __str__(self):

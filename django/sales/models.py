@@ -4,7 +4,6 @@ from products.models import Product
 
 from django.db import models
 from django.db.models import F, Sum
-from django.utils import timezone
 
 
 class Sales(models.Model):
@@ -17,7 +16,7 @@ class Sales(models.Model):
         Product, related_name="sale", through="ProductsSales"
     )
     created_date = models.DateTimeField(
-        auto_now_add=True, default=timezone.now
+        auto_now_add=True, editable=False
     )
 
     def total_price(self):
@@ -45,7 +44,7 @@ class ProductsSales(models.Model):
     sale = models.ForeignKey(Sales, on_delete=models.CASCADE)
     quantity_purchased = models.PositiveIntegerField()
     created_date = models.DateTimeField(
-        auto_now_add=True, default=timezone.now
+        auto_now_add=True, editable=False
     )
 
     def __str__(self):
