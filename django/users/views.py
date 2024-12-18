@@ -1,7 +1,7 @@
 from rest_framework import generics, viewsets
+from rest_framework.permissions import IsAuthenticated
 from users.models import User
 from users.serializers import UserSerializer
-from rest_framework.permissions import IsAuthenticated
 
 
 class UserViewSet(viewsets.ModelViewSet):

@@ -1,7 +1,7 @@
 from rest_framework import generics, viewsets
+from rest_framework.permissions import IsAuthenticated
 from sales.models import ProductsSales, Sales
 from sales.serializers import SerializerProductsSales, SerializerSales
-from rest_framework.permissions import IsAuthenticated
 
 
 class ProductsSalesViewSet(viewsets.ModelViewSet):
