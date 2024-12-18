@@ -15,9 +15,7 @@ class Sales(models.Model):
     products = models.ManyToManyField(
         Product, related_name="sale", through="ProductsSales"
     )
-    created_date = models.DateTimeField(
-        auto_now_add=True, editable=False
-    )
+    created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     def total_price(self):
         return (
@@ -43,9 +41,7 @@ class ProductsSales(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     sale = models.ForeignKey(Sales, on_delete=models.CASCADE)
     quantity_purchased = models.PositiveIntegerField()
-    created_date = models.DateTimeField(
-        auto_now_add=True, editable=False
-    )
+    created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
         return f"{self.product.name} - {self.quantity_purchased}"
@@ -57,6 +53,14 @@ class ProductsSales(models.Model):
                 f"Disponível: {self.product.stock}, solicitado: {self.quantity_purchased}."
             )
         self.product.stock -= self.quantity_purchased
+        self.product.save()
+
+    def add_stock(self, quantity):
+        if quantity < 0:
+            raise ValueError(
+                "A quantidade a ser adicionada deve ser positiva."
+            )
+        self.product.stock += quantity
         self.product.save()
 
     def total_price(self):
