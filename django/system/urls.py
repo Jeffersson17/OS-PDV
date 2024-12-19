@@ -28,10 +28,10 @@ from django.urls import include, path
 
 router = routers.DefaultRouter()
 router.register(r"users", UserViewSet)
-router.register(r"address", AddressViewSet)
-router.register(r"city", CityViewSet)
-router.register(r"product", ProductViewSet)
-router.register(r"product_brand", ProductBrandViewSet)
+router.register(r"addresses", AddressViewSet)
+router.register(r"cities", CityViewSet)
+router.register(r"products", ProductViewSet)
+router.register(r"products_brands", ProductBrandViewSet)
 router.register(r"products_sales", ProductsSalesViewSet)
 router.register(r"sales", SalesViewSet)
 
@@ -44,37 +44,37 @@ urlpatterns = [
         "api-auth/", include("rest_framework.urls", namespace="rest_framework")
     ),
     path(
-        "users-api/detail/<int:pk>/",
+        "users/user/<uuid:pk>/",
         UserDetailAPIView.as_view(),
         name="detail_api",
     ),
     path(
-        "sales-api/detail/<int:pk>/",
+        "sales/sale/<uuid:pk>/",
         SalesDetailAPIView.as_view(),
         name="sales_detail",
     ),
     path(
-        "products-sales/detail/<int:pk>/",
+        "products_sales/product_sale/<uuid:pk>/",
         ProductsSalesDetailAPIView.as_view(),
         name="products_sales_detail",
     ),
     path(
-        "address-api/detail/<int:pk>/",
+        "addresses/address/<uuid:pk>/",
         AddressDetailAPIView.as_view(),
         name="address_detail",
     ),
     path(
-        "city-api/detail/<int:pk>/",
+        "cities/city/<uuid:pk>/",
         CityDetailAPIView.as_view(),
         name="city_detail",
     ),
     path(
-        "product-api/detail/<int:pk>/",
+        "products/product/<uuid:pk>/",
         ProductDetailAPIView.as_view(),
         name="product_detail",
     ),
     path(
-        "product-brand-api/detail/<int:pk>/",
+        "products_brands/product_brand/<uuid:pk>/",
         ProductBrandDetailAPIView.as_view(),
         name="product_brand_detail",
     ),
