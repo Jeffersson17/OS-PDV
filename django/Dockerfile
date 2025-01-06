@@ -4,8 +4,6 @@ WORKDIR /api
 
 COPY ./system/requirements/main.txt .
 
-COPY . .
-
 RUN pip install --no-cache-dir -r main.txt
 
 EXPOSE 8000
